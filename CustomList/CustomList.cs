@@ -14,7 +14,7 @@ namespace CustomList
 
         public void Add(T itemToAdd)
         {
-
+            //Console.WriteLine();
         }
 
         public void Remove(T itemToRemove)
