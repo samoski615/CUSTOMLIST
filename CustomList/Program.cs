@@ -10,6 +10,14 @@ namespace CustomList
     {
         static void Main(string[] args)
         {
+            CustomList<int> numbers = new CustomList<int>();
+
+
+            numbers.Add(5);
+
+            //hover over variables/objects while debugging to check out their values
+            Console.ReadLine();
         }
+
     }
 }
