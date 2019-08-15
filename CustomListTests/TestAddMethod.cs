@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 namespace CustomListTests
 {
     [TestClass]
-    public class UnitTest1
+    public class TestAddMethod
     {
         CustomList<int> numbers;
 
@@ -20,7 +20,7 @@ namespace CustomListTests
           
 
          //act
-         numbers.Add(1);
+         //numbers.Add(1);
          actual = numbers[0];
             
          //assert
@@ -39,8 +39,8 @@ namespace CustomListTests
              int actual;
 
              //act
-             numbers.Add(1);
-             numbers.Add(2);
+             //numbers.Add(1);
+             //numbers.Add(2);
              actual = numbers[1];
 
              //assert
@@ -61,6 +61,16 @@ namespace CustomListTests
 
         //}
 
+
+        
+
+
+
+
+
+
+
     }
+
 }
 

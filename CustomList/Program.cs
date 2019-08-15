@@ -12,11 +12,11 @@ namespace CustomList
         {
             CustomList<int> numbers = new CustomList<int>();
 
-            //numbers.Add(1);
-            //numbers.Add(2);
-            //numbers.Add(3);
-            //numbers.Add(4);
-            //numbers.Add(5);
+            numbers.Add(1);
+            numbers.Add(2);
+            numbers.Add(3);
+            numbers.Add(4);
+            numbers.Add(5);
 
         }
 

@@ -28,15 +28,15 @@ namespace CustomList
 
         //constructor
 
-       
+
 
         //member methods
-        //public int Add(T itemsToAdd)
-        //{
-            
-        //    myArray[count] = itemsToAdd;
-        //    return count;
-        //}
+        public int Add(T itemsToAdd)
+        {
+
+            myArray[count] = itemsToAdd;
+            return count;
+        }
 
         public void Remove(T itemsToRemove)
         {
@@ -53,7 +53,7 @@ namespace CustomList
             
         }
 
-        public void IncreaseArrayCapacity(T itemsToIncrease)
+        public void IncreaseArrayCapacity()
         {
             if (count == capacity)
             {
