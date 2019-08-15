@@ -8,16 +8,37 @@ namespace CustomList
 {
      public class CustomList<T>
      {
-       private T[] items;
-       public CustomList<T> numbers = new CustomList<T>();
 
+        //member variables
+        private T[] myArray;
+        int count;
+        int capacity;
 
-        public void Add(T itemToAdd)
+        public T this[int i]
         {
-            //Console.WriteLine();
+            get
+            { 
+                return myArray[i];
+            }
+            set
+            {
+                myArray[i] = value;
+            }
         }
 
-        public void Remove(T itemToRemove)
+        //constructor
+
+       
+
+        //member methods
+        //public int Add(T itemsToAdd)
+        //{
+            
+        //    myArray[count] = itemsToAdd;
+        //    return count;
+        //}
+
+        public void Remove(T itemsToRemove)
         {
 
         }
@@ -27,9 +48,30 @@ namespace CustomList
 
         }
 
+        public void ToString(T itemsToString)
+        {
+            
+        }
+
+        public void IncreaseArrayCapacity(T itemsToIncrease)
+        {
+            if (count == capacity)
+            {
+                capacity *= capacity;
+            }
+
+            myArray = new T[capacity];
+
+            count++;
 
 
+        }
 
+
+        public void Count()
+        {
+
+        }
      }
 
         

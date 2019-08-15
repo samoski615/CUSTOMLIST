@@ -7,39 +7,60 @@ namespace CustomListTests
     [TestClass]
     public class UnitTest1
     {
-        readonly CustomList<int> numbers = new CustomList<int>();
+        CustomList<int> numbers;
 
         [TestMethod]
         public void Add_AddToEmptyList_ItemGoesToIndexZero()
         {
-            //arrange
-            int expected = 5;
-            int actual;
+         //arrange
+         numbers = new CustomList<int>();
 
-            //act
-            numbers.Add(5);
-            actual = numbers.Add[0];
+         int expected = 1;
+         int actual;
+          
 
-            //assert
-            Assert.AreEqual(expected, actual);
-
-        }
-        [TestMethod]
-        public void Add_AddToPopulatedList_ItemGoesToEndOfIndex()
-        {
-            //arrange
-            int expected = 5;
-            int actual;
+         //act
+         numbers.Add(1);
+         actual = numbers[0];
             
-            //act
-            numbers.Add(5);
-            numbers.Add(6);
-            actual = 
-
-            //assert
-            Assert.AreEqual(expected, actual);
+         //assert
+         Assert.AreEqual(expected, actual);
+        
 
         }
+
+
+    [TestMethod]
+    public void Add_AddToPopulatedList_ItemGoesToEndOfIndex()
+    {
+             //arrange
+             numbers = new CustomList<int>();
+             int expected = 1;
+             int actual;
+
+             //act
+             numbers.Add(1);
+             numbers.Add(2);
+             actual = numbers[1];
+
+             //assert
+             Assert.AreEqual(expected, actual);
+    }
+
+
+        //[TestMethod]
+        //public void Add_AddToPopulatedList_ItemGoesToSpecificIndex()
+        //{
+        //    //arrange
+        //    numbers = new CustomList<int>();
+
+        //    //act
+
+        //    //assert
+
+
+        //}
 
     }
 }
+
