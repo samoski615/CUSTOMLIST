@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-     public class CustomList<T>
-     {
+    public class CustomList<T>
+    {
 
         //member variables
         private T[] myArray;
@@ -17,7 +17,7 @@ namespace CustomList
         public T this[int i]
         {
             get
-            { 
+            {
                 return myArray[i];
             }
             set
@@ -27,7 +27,11 @@ namespace CustomList
         }
 
         //constructor
-
+        public CustomList(){
+            this.count = 0;
+            this.capacity = 0;
+            myArray = new T[capacity];
+        } 
 
 
         //member methods
