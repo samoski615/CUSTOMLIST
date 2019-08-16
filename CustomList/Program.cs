@@ -16,7 +16,9 @@ namespace CustomList
             numbers.Add(2);
             numbers.Add(3);
             numbers.Add(4);
-            numbers.Add(5);
+            //numbers.IncreaseArrayCapacity();
+            numbers.RemoveAndReplace(7);
+            //numbers.Remove(7);
 
         }
 

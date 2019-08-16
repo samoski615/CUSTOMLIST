@@ -29,24 +29,39 @@ namespace CustomList
         //constructor
         public CustomList(){
             this.count = 0;
-            this.capacity = 0;
+            this.capacity = 4;
             myArray = new T[capacity];
+        
         } 
 
 
         //member methods
-        public int Add(T itemsToAdd)
+        public void Add(T itemsToAdd)
         {
-
             myArray[count] = itemsToAdd;
-            return count;
+            count++;
         }
 
-        public void Remove(T itemsToRemove)
+        public void RemoveAndReplace(T itemsToReplace)
         {
+            for (int i = 0; i < count; i++)
+            {
+                                      
+                if (Compare(count, itemsToReplace))
+                {
+                    myArray[count] = itemsToReplace;
+                }
+
+            }
 
         }
 
+        private bool Compare(int count, T itemsToReplace)
+        {
+            throw new NotImplementedException();
+        }
+
+       
         public void Zip(T itemsToZip)
         {
 
@@ -65,10 +80,8 @@ namespace CustomList
             }
 
             myArray = new T[capacity];
-
+            //need to add a step to add lists together so to not replace populated array with empty one
             count++;
-
-
         }
 
 
@@ -76,7 +89,16 @@ namespace CustomList
         {
 
         }
-     }
+
+        //public void Remove(T itemsToRemove)
+        //{
+        //    myArray[count - 1] = itemsToRemove;
+
+        //}
+
+
+    }
+
 
         
 }
