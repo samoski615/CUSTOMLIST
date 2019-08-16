@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,13 +7,15 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T>
+    public class CustomList<T> 
     {
 
         //member variables
         private T[] myArray;
         int count;
         int capacity;
+        int value;
+        GenericComparer<int> comparer;
 
         public T this[int i]
         {
@@ -30,10 +33,12 @@ namespace CustomList
         public CustomList(){
             this.count = 0;
             this.capacity = 4;
+            this.value = 0;
             myArray = new T[capacity];
-        
-        } 
+            comparer = new GenericComparer<int>();
+        }
 
+       
 
         //member methods
         public void Add(T itemsToAdd)
@@ -42,26 +47,17 @@ namespace CustomList
             count++;
         }
 
-        public void RemoveAndReplace(T itemsToReplace)
+        public T RemoveAndReplace(T itemsToReplace)
         {
-            for (int i = 0; i < count; i++)
+            //GenericComparer<int> comparer = new GenericComparer<int>();
+            for (int i = 0; i < myArray.Length; i++)
             {
-                                      
-                if (Compare(count, itemsToReplace))
-                {
-                    myArray[count] = itemsToReplace;
-                }
-
+                if (comparer.Compare(count, myArray.Length)) ;
             }
-
+            return itemsToReplace;
         }
-
-        private bool Compare(int count, T itemsToReplace)
-        {
-            throw new NotImplementedException();
-        }
-
-       
+                
+              
         public void Zip(T itemsToZip)
         {
 
@@ -78,9 +74,8 @@ namespace CustomList
             {
                 capacity *= capacity;
             }
-
             myArray = new T[capacity];
-            //need to add a step to add lists together so to not replace populated array with empty one
+            
             count++;
         }
 
@@ -90,6 +85,11 @@ namespace CustomList
 
         }
 
+       
+
+       
+
+       
         //public void Remove(T itemsToRemove)
         //{
         //    myArray[count - 1] = itemsToRemove;

@@ -9,7 +9,7 @@ namespace CustomListTests
     {
         CustomList<int> numbers;
 
-        [TestMethod]
+        [TestMethod]  //working test for Add method
         public void Add_AddToEmptyList_ItemGoesToIndexZero()
         {
          //arrange
@@ -30,7 +30,7 @@ namespace CustomListTests
         }
 
 
-    [TestMethod]
+    [TestMethod]  //working test for Add method
     public void Add_AddToPopulatedList_ItemGoesToEndOfIndex()
     {
              //arrange
