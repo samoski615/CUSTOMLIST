@@ -49,8 +49,10 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TestMethods.cs" />
+    <Compile Include="RemoveUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AdditionUnitTests.cs" />
+    <Compile Include="ToStringUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

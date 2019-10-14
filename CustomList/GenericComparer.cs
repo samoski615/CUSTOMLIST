@@ -9,7 +9,7 @@ namespace CustomList
     class GenericComparer<T>
     {
         //member variables
-        T value;
+        //T value;
 
         //constructor
 

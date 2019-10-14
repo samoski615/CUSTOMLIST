@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CustomList
 {
-    public class CustomList<T> 
+    public class CustomList<T> : IEnumerable<T>
     {
 
         //member variables
@@ -17,20 +17,65 @@ namespace CustomList
         int value;
         GenericComparer<int> comparer;
 
+        public int Capacity
+        {
+            get
+            {
+                return capacity;
+            }
+            set
+            {
+                capacity = value;
+            }
+        }
+
+        public int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
+
+
+
         public T this[int i]
         {
             get
             {
-                return myArray[i];
+                if (i < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else if (i >= count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    return myArray[i];
+                }
+
             }
             set
             {
-                myArray[i] = value;
+                if (i < 0)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else if (i >= count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+                else
+                {
+                    myArray[i] = value;
+                }
             }
         }
 
         //constructor
-        public CustomList(){
+        public CustomList() {
             this.count = 0;
             this.capacity = 4;
             this.value = 0;
@@ -38,67 +83,140 @@ namespace CustomList
             comparer = new GenericComparer<int>();
         }
 
-       
+
 
         //member methods
         public void Add(T itemsToAdd)
         {
+            if (count == capacity)
+            {
+                IncreaseArrayCapacity();
+            }
             myArray[count] = itemsToAdd;
             count++;
         }
 
+        public void IncreaseArrayCapacity()
+        {
+            T[] addToArray = new T[capacity * 2];
+            for (int i = 0; i < count; i++)
+            {
+                addToArray[i] = myArray[i];
+            }
+            capacity *= 2;
+            myArray = addToArray;
+        }
+
         public T RemoveAndReplace(T itemsToReplace)
         {
-            //GenericComparer<int> comparer = new GenericComparer<int>();
-            for (int i = 0; i < myArray.Length; i++)
+            for (int i = 0; i < count; i++)
             {
-                if (comparer.Compare(count, myArray.Length)) ;
+                bool compare = Equals(myArray[i], itemsToReplace);
+                if (compare)
+                {
+                    for (int j = i; j < count; j++)
+                    {
+                        if (j == count - 1)
+                        {
+                            myArray[j] = default;
+                            break;
+                        }
+                        myArray[j] = myArray[j + 1];
+                    }
+                    count--;
+                    break;
+                }
             }
             return itemsToReplace;
         }
-                
-              
-        public void Zip(T itemsToZip)
-        {
 
+
+        public override string ToString()
+        {
+            CustomList<T> results = new CustomList<T>();
+            return String.Format(results, );
         }
 
-        public void ToString(T itemsToString)
+        public CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
         {
-            
-        }
-
-        public void IncreaseArrayCapacity()
-        {
-            if (count == capacity)
+            CustomList<T> results = new CustomList<T>();
+            if (listOne.Count >= listTwo.Count)
             {
-                capacity *= capacity;
+                for (int i = 0; i < listOne.Count; i++)
+                {
+                    results.Add(listOne[i]);
+                    for (int j = 0; j < listTwo.Count; j++)
+                    {
+                        results.Add(listTwo[j]);
+                        break;
+                    }
+                }
+                return results;
             }
-            myArray = new T[capacity];
-            
-            count++;
+            else
+            {
+                for (int i = 0; i < listTwo.Count; i++)
+                {
+                    results.Add(listTwo[i]);
+                    for (int j = 0; j < listOne.Count; j++)
+                    {
+                        results.Add(listOne[j]);
+                        break;
+                    }
+                }
+            }
+            return results;
         }
 
 
-        public void Count()
+        public static CustomList<T> operator +(CustomList<T> listOne, CustomList<T> listTwo)
         {
-
+            CustomList<T> results = new CustomList<T>();
+            for (int i = 0; i < listOne.count; i++)
+            {
+                results.Add(listOne[i]);
+            }
+            for (int j = 0; j < listTwo.count; j++)
+            {
+                results.Add(listTwo[j]);
+            }
+            return results;
         }
 
-       
+        public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+        {
+            CustomList<T> results = new CustomList<T>();
+            for (int i = 0; i < listOne.count; i++)
+            {
+                for (int j = 0; j < listTwo.count; j++)
+                {
+                    if (Comparer.Equals(listOne[i], listTwo[j]))
+                    {
+                        break;
+                    }
+                    else if (j == listTwo.count - 1)
+                    {
+                        results.Add(listOne[i]);
+                    }
+                }
+            }
+            return results;
+        }
 
-       
+        public IEnumerator<T> GetEnumerator()
+        {
+            for (int i = 0; i < Count; i++)
+            {
+                yield return myArray[i];
+            }
+        }
 
-       
-        //public void Remove(T itemsToRemove)
-        //{
-        //    myArray[count - 1] = itemsToRemove;
-
-        //}
-
-
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
     }
-
-
-        
 }
+
+
+   
