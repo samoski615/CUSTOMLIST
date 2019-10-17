@@ -49,10 +49,13 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="RemoveUnitTests.cs" />
+    <Compile Include="RemoveAndReplaceUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AdditionUnitTests.cs" />
     <Compile Include="ToStringUnitTests.cs" />
+    <Compile Include="CombineListsUnitTests.cs" />
+    <Compile Include="RemoveFromList.cs" />
+    <Compile Include="ZipUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

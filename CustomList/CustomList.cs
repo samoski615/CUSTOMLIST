@@ -14,7 +14,7 @@ namespace CustomList
         private T[] myArray;
         int count;
         int capacity;
-        int value;
+        //int value;
         GenericComparer<int> comparer;
 
         public int Capacity
@@ -55,7 +55,6 @@ namespace CustomList
                 {
                     return myArray[i];
                 }
-
             }
             set
             {
@@ -78,7 +77,7 @@ namespace CustomList
         public CustomList() {
             this.count = 0;
             this.capacity = 4;
-            this.value = 0;
+            //this.value = 0;
             myArray = new T[capacity];
             comparer = new GenericComparer<int>();
         }
@@ -130,14 +129,24 @@ namespace CustomList
             return itemsToReplace;
         }
 
-
         public override string ToString()
         {
-            CustomList<T> results = new CustomList<T>();
-            return String.Format(results, );
+            string variableToReplace = "";
+            for (int i = 0; i < count; i++)
+            {
+                if (i == count - 1)
+                {
+                    variableToReplace += myArray[i].ToString();
+                }
+                else
+                {
+                    variableToReplace += myArray[i].ToString() + ", ";
+                }
+            }
+            return variableToReplace;
         }
 
-        public CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
+        public static CustomList<T> Zip(CustomList<T> listOne, CustomList<T> listTwo)
         {
             CustomList<T> results = new CustomList<T>();
             if (listOne.Count >= listTwo.Count)

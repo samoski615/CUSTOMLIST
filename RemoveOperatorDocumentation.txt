@@ -1,0 +1,28 @@
+
+Syntax:
+public static CustomList<T> operator -(CustomList<T> listOne, CustomList<T> listTwo)
+
+Parameters:
+
+Customlist<T> listOne, CustomList<T> listTwo
+The list items to be compared.
+
+
+Returns:
+listOne
+
+Returns listOne after comparing listOne to listTwo. Performs a comparison check to see if 
+matching values are present in both listOne and listTwo; if present, the matching value is 
+removed from listOne and listOne is returned as a new list with remaining values.
+
+
+CustomList<int> listOne = new CustomList() { 1, 2, 3};
+CustomList<int> listTwo = new CustomList() { 2, 4, 5};
+CustomList<int> results = new CustomList();
+
+results = listOne - listTwo;
+resultsList = results;
+
+//resultsList output == { 1, 3 }
+
+

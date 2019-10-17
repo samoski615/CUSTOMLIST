@@ -49,6 +49,8 @@ namespace CustomList
             [TestMethod]
             public void Add_AddItemsToFullList_ListExpandsToTakeNewItems()
             {
+                //***This also tests the IncreaseArrayCapacity() method***//
+
                 //arrange
                 numbers = new CustomList<int>() { 1, 2, 3, 4, 5 };
                 int expected = 5;
